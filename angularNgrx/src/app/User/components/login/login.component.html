@@ -1,0 +1,78 @@
+<form [formGroup]="loginForm" novalidate>
+  <div class="container-field">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h4 class="title">LOGIN TO YOUR ACCOUNT</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="Login-form">
+          <mat-form-field class="login-form-wrapper">
+            <input matInput type="email" formControlName="Email" />
+            <mat-label>
+              Email
+              <mat-icon>mail</mat-icon>
+            </mat-label>
+          </mat-form-field>
+          <mat-form-field class="login-form-wrapper">
+            <input matInput type="password" formControlName="Password" />
+            <mat-label>
+              Password
+              <mat-icon>vpn_key</mat-icon>
+            </mat-label>
+          </mat-form-field>
+          <ul class="login-form-wrapper ul-wrapper">
+            <li>
+              <mat-checkbox>Remember Me</mat-checkbox>
+            </li>
+            <li>
+              <mat-label>Forgot Password?</mat-label>
+            </li>
+          </ul>
+          <div class="login-button">
+            <button
+              class="mat-raised-button mat-primary"
+              color="primary"
+              mat-raised-button
+            >
+              LOGIN
+            </button>
+          </div>
+        </div>
+        <div class="separator">
+          <span class="text">
+            OR
+          </span>
+        </div>
+        <div class="social-link-btn">
+          <button
+            class="mat-warn mat-raised-button padding-btn"
+            color="warn"
+            mat-raised-button
+          >
+            Log in with Google
+          </button>
+          <button
+            class="facebook mat-raised-button padding-btn"
+            mat-raised-button
+          >
+            Log in with Facebook
+          </button>
+        </div>
+        <div class="register-account">
+          <span class="text">Don't have an account?</span>
+          <span class="link" (click)="onRegister()">Create an account</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
+<div class="logo-container">
+  <div class="logo">
+    <img class="logo-img" src="assets/images/MezzoPly.png" />
+    <div class="center-info">
+      <h1>Welcome to MezzoPly</h1>
+    </div>
+  </div>
+</div>
