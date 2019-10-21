@@ -16,6 +16,11 @@ const routes: Routes = [
       import('./Products/product.module').then(m => m.ProductModule)
   },
   {
+    path: 'dash-board',
+    loadChildren: () =>
+      import('./dash-board/dash-board.module').then(m => m.DashBoardModule)
+  },
+  {
     path: '**',
     redirectTo: 'user',
     pathMatch: 'full'
