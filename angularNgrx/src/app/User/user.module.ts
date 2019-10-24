@@ -8,6 +8,11 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { StoreModule } from '@ngrx/store';
+
+// reducers
+import { loginReducer } from './state/login.reducer';
+
 // components
 import { LoginComponent } from './components/login/login.component';
 
@@ -22,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
     MatIconModule,
     MatInputModule,
     SharedModule,
+    StoreModule.forFeature('login', loginReducer),
     UserRouteConfig
   ],
   exports: [

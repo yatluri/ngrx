@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { AppRouteConfig } from './app.route.config';
 import 'hammerjs';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     CommonModule,
     SharedModule.forRoot(),
+    StoreModule.forRoot({}),
     AppRouteConfig
   ],
   providers: [],
