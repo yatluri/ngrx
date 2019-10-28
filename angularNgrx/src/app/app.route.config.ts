@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 // modules
-import { ProductModule } from './Products/product.module';
-import { UserModule } from './User/user.module';
-
 const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./User/user.module').then(m => m.UserModule)
-  },
-  {
-    path: 'products',
-    loadChildren: () =>
-      import('./Products/product.module').then(m => m.ProductModule)
   },
   {
     path: 'dash-board',
@@ -28,7 +20,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
 export class AppRouteConfig {}

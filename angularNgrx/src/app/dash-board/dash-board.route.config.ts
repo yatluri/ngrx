@@ -2,14 +2,31 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // components
-import { DashBoardViewComponent } from './components/dash-board-view/dash-board-view.component';
+import { DashBoardComponent } from './pages/dash-board.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductsDetailComponent } from './components/products/products-detail/products-detail.component';
 
 const routes: Routes = [
-  { path: 'dash-board-view', component: DashBoardViewComponent },
   {
-    path: '**',
-    redirectTo: 'dash-board-view',
-    pathMatch: 'full'
+    path: '',
+    component: DashBoardComponent,
+    children: [
+      {
+        path: 'product-list',
+        component: ProductsListComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'product-detail',
+        component: ProductsDetailComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: '**',
+        redirectTo: 'product-list',
+        pathMatch: 'full'
+      }
+    ]
   }
 ];
 

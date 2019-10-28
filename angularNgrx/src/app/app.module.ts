@@ -6,6 +6,8 @@ import { SharedModule } from '@shared/shared.module';
 import { AppRouteConfig } from './app.route.config';
 import 'hammerjs';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '@environment/environment';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +19,11 @@ import { AppComponent } from './app.component';
     CommonModule,
     SharedModule.forRoot(),
     StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      name: 'Mezzo ply',
+      maxAge: 30,
+      logOnly: !environment.production
+    }),
     AppRouteConfig
   ],
   providers: [],

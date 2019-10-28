@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup = this.getLoginFormGroup();
-  constructor(private fb: FormBuilder, private routerService: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private routerService: Router,
+    private ngrxStore: Store<any>
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.ngrxStore.pipe(select('login')).subscribe(loginPayLoad => {
+      if (loginPayLoad) {
+        this.afterLogin(loginPayLoad);
+      }
+    });
+  }
   getLoginFormGroup(): FormGroup {
     return this.fb.group({
       Email: ['', [Validators.required, Validators.email]],
@@ -22,12 +33,17 @@ export class LoginComponent implements OnInit {
     });
   }
   onRegister() {}
-  onLogin() {
-    if (
-      this.loginForm.get('Email').value === '123@gmail.com' &&
-      this.loginForm.get('Password').value === '123456'
-    ) {
-      this.routerService.navigate(['/dash-board/dash-board-view']);
+  dispatchLogin(): void {
+    this.ngrxStore.dispatch({
+      type: 'IS_USER_LOGGED_IN',
+      payload:
+        this.loginForm.get('Email').value === '123@gmail.com' &&
+        this.loginForm.get('Password').value === '123456'
+    });
+  }
+  afterLogin(loginPayLoad: any): void {
+    if (loginPayLoad.isUserLoggedIn) {
+      this.routerService.navigate(['/dash-board/']);
     }
   }
 }

@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 
 // reducers
-import { loginReducer } from './state/login.reducer';
+import { loginReducer } from '@shared/state/login.reducer';
 
 // components
 import { LoginComponent } from './components/login/login.component';

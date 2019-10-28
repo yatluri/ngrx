@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+<form [formGroup]="loginForm" (ngSubmit)="dispatchLogin()" novalidate>
   <div class="container-field">
     <mat-card>
       <mat-card-header>
@@ -9,17 +9,31 @@
       <mat-card-content>
         <div class="Login-form">
           <mat-form-field class="login-form-wrapper">
-            <input matInput type="email" formControlName="Email" maxlength="60" required />
+            <input
+              matInput
+              type="email"
+              formControlName="Email"
+              maxlength="60"
+              required
+            />
             <mat-label>
               Email
               <mat-icon>mail</mat-icon>
             </mat-label>
             <mat-error *ngIf="loginForm.get('Email').touched">
-              <span *ngIf="loginForm.get('Email').hasError('email')">Please enter a valid email address</span>
+              <span *ngIf="loginForm.get('Email').hasError('email')"
+                >Please enter a valid email address</span
+              >
             </mat-error>
           </mat-form-field>
           <mat-form-field class="login-form-wrapper">
-            <input matInput type="password" formControlName="Password" maxlength="9" required />
+            <input
+              matInput
+              type="password"
+              formControlName="Password"
+              maxlength="9"
+              required
+            />
             <mat-label>
               Password
               <mat-icon>vpn_key</mat-icon>
@@ -39,7 +53,12 @@
             </li>
           </ul>
           <div class="login-button">
-            <button class="mat-raised-button mat-primary" color="primary" mat-raised-button [disabled]="!loginForm.valid">
+            <button
+              class="mat-raised-button mat-primary"
+              color="primary"
+              mat-raised-button
+              [disabled]="!loginForm.valid"
+            >
               LOGIN
             </button>
           </div>
@@ -50,10 +69,19 @@
           </span>
         </div>
         <div class="social-link-btn">
-          <button class="mat-warn mat-raised-button padding-btn" color="warn" mat-raised-button [disabled]="true">
+          <button
+            class="mat-warn mat-raised-button padding-btn"
+            color="warn"
+            mat-raised-button
+            [disabled]="true"
+          >
             Log in with Google
           </button>
-          <button class="facebook mat-raised-button padding-btn" mat-raised-button [disabled]="true">
+          <button
+            class="facebook mat-raised-button padding-btn"
+            mat-raised-button
+            [disabled]="true"
+          >
             Log in with Facebook
           </button>
         </div>

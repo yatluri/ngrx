@@ -1,10 +1,10 @@
-import { Action } from '../models/action.model';
+import { Action } from '@shared/models/action.model';
 export function loginReducer(state, action: Action) {
   switch (action.type) {
-    case 'MASK_USER_NAME':
+    case 'IS_USER_LOGGED_IN':
       return {
         ...state,
-        maskUserName: action.payload
+        isUserLoggedIn: action.payload
       };
     default:
       return state;
