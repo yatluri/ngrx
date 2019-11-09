@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 // components
 import { DashBoardComponent } from './pages/dash-board.component';
-import { ProductsListComponent } from './components/products/products-list/products-list.component';
-import { ProductsDetailComponent } from './components/products/products-detail/products-detail.component';
 
 const routes: Routes = [
   {
@@ -12,18 +10,13 @@ const routes: Routes = [
     component: DashBoardComponent,
     children: [
       {
-        path: 'product-list',
-        component: ProductsListComponent,
-        pathMatch: 'full'
-      },
-      {
-        path: 'product-detail',
-        component: ProductsDetailComponent,
-        pathMatch: 'full'
+        path: 'products',
+        loadChildren: () =>
+          import('../Products/products.module').then(m => m.ProductsModule)
       },
       {
         path: '**',
-        redirectTo: 'product-list',
+        redirectTo: 'products',
         pathMatch: 'full'
       }
     ]

@@ -10,16 +10,11 @@ import { DashBoardRouteConfig } from './dash-board.route.config';
 
 // components
 import { DashBoardComponent } from './pages/dash-board.component';
-import { ProductsListComponent } from './components/products/products-list/products-list.component';
-import { ProductsDetailComponent } from './components/products/products-detail/products-detail.component';
+
 import { loginReducer } from '@shared/state/login.reducer';
 
 @NgModule({
-  declarations: [
-    DashBoardComponent,
-    ProductsListComponent,
-    ProductsDetailComponent
-  ],
+  declarations: [DashBoardComponent],
   imports: [
     MatButtonModule,
     MatCardModule,
