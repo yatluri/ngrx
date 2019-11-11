@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyC7tJszqI-WQv59oJNVXFM20mYpj4pd5-o',
+  authDomain: 'mezzo-ply.firebaseapp.com',
+  databaseURL: 'https://mezzo-ply.firebaseio.com',
+  projectId: 'mezzo-ply',
+  storageBucket: 'mezzo-ply.appspot.com',
+  messagingSenderId: '1016502863790',
+  appId: '1:1016502863790:web:38529088d11beed550ea3f'
+  }
 };
 
 /*

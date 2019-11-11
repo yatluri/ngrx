@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CommonModule,
     SharedModule.forRoot(),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({

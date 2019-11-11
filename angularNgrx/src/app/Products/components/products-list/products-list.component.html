@@ -1,1 +1,57 @@
-<p>products-list works!</p>
+<div class="padder">
+    <ng-container *ngIf="pCollection$ | async as products">
+            <table mat-table [dataSource]="products" class="mat-elevation-z8"
+            matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+            <!---Image Column-->
+            <ng-container matColumnDef="Image">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let row">
+                        <img [src]="row.MediaPath" width="100" height="100" />
+                    </td>
+                  </ng-container>
+       <!-- Name Column -->
+       <ng-container matColumnDef="Name">
+         <th mat-header-cell *matHeaderCellDef>Name</th>
+         <td mat-cell *matCellDef="let row">{{row.Name}}</td>
+       </ng-container>
+ 
+       <!-- Status Column -->
+       <ng-container matColumnDef="StatusCode">
+         <th mat-header-cell *matHeaderCellDef>Status</th>
+         <td mat-cell *matCellDef="let row">{{row.StatusCode}}</td>
+       </ng-container>
+ 
+       <!-- Description Column -->
+       <ng-container matColumnDef="Description">
+         <th mat-header-cell *matHeaderCellDef>Description</th>
+         <td mat-cell *matCellDef="let row">{{row.Description}}</td>
+       </ng-container>
+ 
+       <!-- Product Count Column -->
+       <ng-container matColumnDef="ProductCount">
+         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+           Product Count
+         </th>
+         <td mat-cell *matCellDef="let row">{{row.ProductCount}}</td>
+       </ng-container>
+       <!--Action Column-->
+       <ng-container matColumnDef="Action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef>
+                    <button
+                    type="button"
+                    class="mat-raised-button mat-primary"
+                    color="primary"
+                    mat-raised-button                    
+                  >
+                    Edit
+                  </button>
+            </td>
+          </ng-container>        
+ 
+       <tr mat-header-row *matHeaderRowDef="vm.displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: vm.displayedColumns;"></tr>
+     </table>
+    </ng-container>
+</div>
