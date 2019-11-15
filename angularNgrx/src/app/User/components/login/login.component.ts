@@ -17,9 +17,10 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ngrxStore.pipe(select('login')).subscribe(loginPayLoad => {
-      if (loginPayLoad) {
-        this.afterLogin(loginPayLoad);
+    this.ngrxStore.pipe(select('login')).subscribe(userPayLoad => {
+      if (typeof userPayLoad !== 'undefined' && userPayLoad !== null) {
+      userPayLoad.hasOwnProperty('isUserLoggedIn') ?
+       this.afterLogin(userPayLoad) : this.onRegister(userPayLoad);
       }
     });
   }
@@ -32,7 +33,17 @@ export class LoginComponent implements OnInit {
       ]
     });
   }
-  onRegister() {}
+  dispatchRegister() {
+    this.ngrxStore.dispatch({
+      type: 'IS_USER_REGISTERED',
+      payload: false
+    });
+  }
+  onRegister(payload) {
+ if (!payload.isUserRegistered) {
+   this.routerService.navigate(['/user/registration-page']);
+ }
+  }
   dispatchLogin(): void {
     this.ngrxStore.dispatch({
       type: 'IS_USER_LOGGED_IN',

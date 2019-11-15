@@ -6,6 +6,11 @@ export function loginReducer(state, action: Action) {
         ...state,
         isUserLoggedIn: action.payload
       };
+    case 'IS_USER_REGISTERED':
+      return {
+        ...state,
+        isUserRegistered: action.payload
+      };
     default:
       return state;
   }

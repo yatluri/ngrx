@@ -15,9 +15,11 @@ import { loginReducer } from '@shared/state/login.reducer';
 
 // components
 import { LoginComponent } from './components/login/login.component';
+import { UserComponent } from './pages/user.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [UserComponent, LoginComponent, RegistrationComponent],
   imports: [
     MatBadgeModule,
     MatButtonModule,

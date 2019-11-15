@@ -22,7 +22,6 @@ export class ProductsListComponent implements OnInit, AfterViewInit {
   constructor(private pService: ProductService) {}
 
   ngOnInit() {
-    this.addProduct();
     this.pService.initializeProducts().subscribe((p: Array<Product>) => {
       this.dataSource = new MatTableDataSource<Product>(p);
       this.dataSource.paginator = this.paginator;

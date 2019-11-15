@@ -1,12 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="dispatchLogin()" novalidate>
   <div class="container-field">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <h4 class="title">LOGIN TO YOUR ACCOUNT</h4>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
         <div class="Login-form">
           <mat-form-field class="login-form-wrapper">
             <input
@@ -87,17 +80,8 @@
         </div>
         <div class="register-account">
           <span class="text">Don't have an account?</span>
-          <span class="link" (click)="onRegister()">Create an account</span>
+          <span class="link" (click)="dispatchRegister()">Create an account</span>
         </div>
-      </mat-card-content>
-    </mat-card>
   </div>
 </form>
-<div class="logo-container">
-  <div class="logo">
-    <img class="logo-img" src="assets/images/MezzoPly.png" />
-    <div class="center-info">
-      <h1>Welcome to MezzoPly</h1>
-    </div>
-  </div>
-</div>
+
