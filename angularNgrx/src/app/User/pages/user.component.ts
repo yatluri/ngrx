@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Store, select} from '@ngrx/store';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
       <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h4 class="title">LOGIN TO YOUR ACCOUNT</h4>
+          <h4 class="title">{{pageTitle}}</h4>
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
@@ -78,10 +79,15 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class UserComponent implements OnInit {
-
-  constructor() { }
+  pageTitle: string;
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.pipe(select('login')).subscribe((userPayload) => {
+     if (typeof userPayload !== 'undefined' && userPayload) {
+     this.pageTitle = userPayload.hasOwnProperty('isUserLoggedIn') ? 'Login Page' : 'Registeration Page';
+     }
+    });
   }
 
 }
